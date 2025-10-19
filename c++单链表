@@ -113,4 +113,13 @@ prev=NULL
        prev=current;
       current=next;
 }
+//用递归写遍历，打印
+void Print(Node* p){
+    if(p==NULL) return;
+     else{
+       printf("%d",p->data);
+       Print(p->next);
+       }
+}
+     
        
