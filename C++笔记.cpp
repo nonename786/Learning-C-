@@ -104,4 +104,35 @@ void insertAtTail(int val){
 	current ->next=newnode;
 };
 
+
+//双链表
+struct Node{
+	int val;
+	Node* next;
+	Node* prev;
+	Node(int x):val(x),next(nullptr),prev(nullptr){}
+}; 
+//插入双链表的开头
+Node* head;
+void GetNewNode(int x){
+	Node *temp=new Node();
+	temp->data=x;
+	temp->prev=NULL;
+	temp->next=NULL;
+	return temp;
+}
+void InsertAtHead(int x){
+	Node* newNode=GetNewNode(x);
+	if(head==NULL){
+		head=newNode;
+		return;
+	}
+	head->prev=newNode;
+	newNode->next=head;
+	head=newNode;
+}
+//正着和倒着打印就和单链表差不多了 
+int main(){
+	
+}
  
