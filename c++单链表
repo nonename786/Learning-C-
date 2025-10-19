@@ -1,0 +1,116 @@
+以下是单向链表的实现，包括常见操作：插入、删除和遍历。
+
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+// 节点结构体
+struct Node {
+    int data;       // 数据
+    Node* next;     // 指向下一个节点的指针
+
+    Node(int val) : data(val), next(nullptr) {}  // 构造函数
+};
+
+// 单向链表类
+class SinglyLinkedList {
+private:
+    Node* head;  // 链表头指针
+
+public:
+    // 构造函数
+    SinglyLinkedList() : head(nullptr) {}
+
+    // 在链表末尾插入新节点
+    void append(int value) {
+        Node* newNode = new Node(value);
+        if (head == nullptr) {
+            head = newNode;  // 如果链表为空，新的节点就是头节点
+        } else {
+            Node* temp = head;
+            while (temp->next != nullptr) {
+                temp = temp->next;  // 遍历到链表尾部
+            }
+            temp->next = newNode;  // 将新节点链接到链表尾部
+        }
+    }
+
+    // 删除指定值的节点
+    void deleteNode(int value) {
+        if (head == nullptr) return;  // 如果链表为空，直接返回
+
+        if (head->data == value) {
+            Node* temp = head;
+            head = head->next;  // 删除头节点
+            delete temp;  // 释放内存
+            return;
+        }
+
+        Node* temp = head;
+        while (temp->next != nullptr && temp->next->data != value) {
+            temp = temp->next;  // 查找要删除的节点
+        }
+
+        if (temp->next != nullptr) {
+            Node* nodeToDelete = temp->next;
+            temp->next = temp->next->next;  // 删除节点
+            delete nodeToDelete;  // 释放内存
+        }
+    }
+
+    // 遍历链表并输出
+    void printList() {
+        Node* temp = head;
+        while (temp != nullptr) {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+        cout << endl;
+    }
+
+    // 析构函数，释放链表内存
+    ~SinglyLinkedList() {
+        Node* current = head;
+        while (current != nullptr) {
+            Node* nextNode = current->next;
+            delete current;  // 释放当前节点
+            current = nextNode;
+        }
+    }
+};
+
+int main() {
+    SinglyLinkedList list;
+    list.append(10);
+    list.append(20);
+    list.append(30);
+    
+    cout << "Original List: ";
+    list.printList();  // 输出：10 20 30
+
+    list.deleteNode(20);
+    cout << "After Deleting 20: ";
+    list.printList();  // 输出：10 30
+
+    return 0;
+}
+
+
+//反转
+struct Node{
+     int data;
+     Node* next;
+}
+Node* head;
+void Reverse(){
+  Node * current,* prev,*next;
+  current=head;
+prev=NULL
+  while(current！=NULL){
+       next=current->next;
+       current ->next=prev;
+       prev=current;
+      current=next;
+}
+       
