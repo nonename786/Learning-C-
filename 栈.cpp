@@ -244,3 +244,34 @@ whiel(!S.empty()){
 	temp=temp->next;
 }
 temp->next=NULL; 
+
+check for balanced parenteses //检查平衡括号
+每个开括号必须在他的右边又一个闭括号
+每个闭括号应该是最后一个未关闭的括号的闭括号
+从左向右按照上述规则储存在栈里，没遇到一个开括号加进去
+每遇到一个闭括号，比较
+cin string exp;
+creat a stack =s
+for i ==0 to size{
+	if exp[i] is '(' or '[' or '{'
+	    push exp[i];
+	else if(exp[i] is ')' or ']' or'}')
+	        if top does not pair return false
+	        else pop()
+	}
+  } 
+return s is empty 
+
+
+Infix ,Prefix,Postfix = 中缀，前缀，后缀
+ 表达式= 操作数+操作符+操作数  //二进制表达式 
+ 操作数也可以是表达式 
+ 有运算优先级的问题 
+ 优先级相同时 从左向右进行叫操作符左关联
+ 反之 叫右关联 
+ 平常带括号的是中缀表达式
+ 还有其他不用括号的：前缀和后缀表达式 
+ 前缀： 操作符 +操作数+操作数
+ 2+3   ->+2 34 
+ p-q    ->-p q
+ a+b*c   ->+a*b c
